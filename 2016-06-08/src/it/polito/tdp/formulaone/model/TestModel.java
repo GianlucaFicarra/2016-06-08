@@ -21,6 +21,7 @@ public class TestModel {
 			}
 			
 		});
+		
 		for (FantaPilota fp : fps) {
 			System.out.println("Year: " + fp.getYear() + " Points: " + fp.getPoints() + " Rank: " + fp.getRank() + " Eliminato: " + fp.getEliminato());
 		}

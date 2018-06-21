@@ -113,7 +113,13 @@ public class FormulaOneDAO {
 		}
 	}
 
+	
 	public List<FantaPilota> getFantaPiloti(int circuitId, Driver driver) {
+		/*devo prendere tutte le gare relative ad un particolare circuito
+		 * dove un particolare driver ha gareggiato, uso le 4 mape necessarie per i coolegamenti
+		 * selezionando circuito e driver, ho tutti i tempi di giro del pilota selezionato per tutti gli anni,
+		 * mi faccio ridare gli ani diversi, ad ogni anno corrisponde
+		 * un fantapilota */
 		
 		String sql = "select distinct year\n" + 
 				"from races, laptimes, circuits, drivers\n" + 
@@ -149,6 +155,9 @@ public class FormulaOneDAO {
 			}
 			conn.close();
 			
+			//per ogni fanatapilota mi serve la lista dei tempi
+			//riapro nuova connessione e per ogni fantapilota in un anno mi faccio dare la lista dei laptime
+			//ovvero i millisecondi ordinati per giro in modo crescente
 			for (FantaPilota fp : result) {
 				conn = ConnectDB.getConnection();
 				st = conn.prepareStatement(sql2);
@@ -157,15 +166,17 @@ public class FormulaOneDAO {
 				st.setInt(3, fp.getYear());
 				rs = st.executeQuery();
 
+				//lista di millisecodni del giro
 				List<Integer> lapTimes = new ArrayList<Integer>();
 				
 				while (rs.next()) {
 					lapTimes.add(rs.getInt("milliseconds"));
 				}
 				conn.close();
-				fp.setLapTimes(lapTimes);
+				fp.setLapTimes(lapTimes); //vado a salvare la lista di laptime nel fantapilota
 			}
 			
+			//solo alla fine ritorno la lista di fantapiloti
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();

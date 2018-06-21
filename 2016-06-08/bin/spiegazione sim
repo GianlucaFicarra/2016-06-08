@@ -1,0 +1,13 @@
+SPIEGAZIONE SECONDO PUNTO:
+
+ho simulaz dove simulo le prestazioni dello stesso pilota nello stesso circuito in tempi dievrsi
+l'evento è il passaggio dal via del pilota nell'anno considerato per quel particolare giro
+devo tenere traccia della posizione del pilota su quel particolare giro, devo tenere traccia quindi del tempo e del giro
+queste info mi servono per calcolare qual'è la posizione del pilota rispetto al giro precedente (se effettua sorpasso dandogli un punto in più)
+e questo non deve essere 2 giri indietro rispetto al primo o viene squalificato
+
+
+DB
+nella tabella laptime ho i tempi su un giro dato pilota
+gara, ho info sui millisecodni su cascun giro,
+devo fare query del lattime selecionando pilota e gare di interesse mi vado a salvare dei tempi della gara

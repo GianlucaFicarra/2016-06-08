@@ -2,9 +2,9 @@ package it.polito.tdp.formulaone.model;
 
 public class Evento implements Comparable<Evento> {
 
-	private FantaPilota fp;
-	int lap;
-	int time;
+	private FantaPilota fp;  //puntatore al fantapilota
+	int lap;                 //giro di riferimento
+	int time;                //eventi ordianti in base al tempo 
 	
 	public Evento(FantaPilota fp, int lap, int time) {
 		this.fp = fp;
@@ -40,7 +40,7 @@ public class Evento implements Comparable<Evento> {
 
 
 
-	@Override
+	@Override //eventi ordinati in base al tempo
 	public int compareTo(Evento o) {
 		return Integer.compare(this.time, o.time);
 	}

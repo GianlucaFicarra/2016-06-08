@@ -34,9 +34,11 @@ public class Model {
 		return fantaPiloti;
 	}
 	
+	//dal model avvio la simulazione
 	public void simula(int circuitId, Driver driver) {
-		fantaPiloti = fonedao.getFantaPiloti(circuitId, driver);
-		Simulazione sim = new Simulazione(this);
+		fantaPiloti = fonedao.getFantaPiloti(circuitId, driver); //fp sono quelli scelti quando terminiamo circuito ed anno, 
+		          //seleziono quindi circuito e pilota ed ottengo la lista dei fp relativi a tutti gli anni 
+		Simulazione sim = new Simulazione(this); //passo alla simulazione il model stesso per poter accedere ai metodi del model
 		sim.simula();
 	}
 }

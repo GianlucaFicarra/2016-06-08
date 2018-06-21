@@ -4,20 +4,20 @@ import java.util.List;
 
 public class FantaPilota {
 
-	// dato Driver, il circuito
-	
+	// dato Driver e il circuito già selezionati
+	//memorizzo per ogni istanza del pilota immaginario
 	private int year;
-	private List<Integer> lapTimes;
+	private List<Integer> lapTimes; //lista di tempi di percorrenza sul circuito
 	
-	private int points;
-	private int lap;
-	private int rank;
-	private boolean eliminato;
+	private int points;  //punteggio del pilota
+	private int lap;     //giro corrente
+	private int rank;    //posizione
+	private boolean eliminato;   //segna se sorpassato
 	
-	public FantaPilota(int year, List<Integer> lapTimes) {
+	public FantaPilota(int year, List<Integer> lapTimes) { //passo anno e lista tempi su giro
 		this.year = year;
 		this.lapTimes = lapTimes;
-		this.points = 0;
+		this.points = 0; 
 		this.lap = -1;
 		this.rank = Integer.MAX_VALUE;
 		this.eliminato = false;
@@ -80,6 +80,8 @@ public class FantaPilota {
 		return builder.toString();
 	}
 
+	
+	//tiene conto se sia stato doppiato o meno
 	public void setEliminato() {
 		this.eliminato = true;
 	}
